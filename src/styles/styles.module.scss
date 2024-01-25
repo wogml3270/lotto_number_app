@@ -4,23 +4,26 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  height: auto;
-  margin-top: 30px;
+  margin: 30px auto;
+  max-width: 800px;
+  font-family: 'Stylish', serif;
+  font-weight: 600;
+  font-style: normal;
 
-  h1 {
+  & h1 {
     font-size: 28px;
     margin-bottom: 20px;
   }
 
-  & > div {
-    label {
-      font-size: 16px;
-      margin-right: 10px;
-    }
-  }
+  & .inputBox1 {
+    display: flex;
+    flex-direction: column;
 
-  .inputBox1 {
-    input {
+    & label {
+      margin-bottom: 0.75rem;
+    }
+
+    & input {
       font-size: 16px;
       padding: 8px;
       width: 50vw;
@@ -32,8 +35,15 @@
     }
   }
 
-  .inputBox2 {
-    textarea {
+  & .inputBox2 {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      margin-bottom: 0.75rem;
+    }
+
+    & textarea {
       font-size: 16px;
       padding: 8px;
       border-radius: 5px;
@@ -46,21 +56,60 @@
     }
   }
 
-  .submitBtn {
-    font-size: 16px;
+  & .submitBtn {
     padding: 0.5rem 1rem;
     cursor: pointer;
     background-color: #774de9;
     color: #fff;
     border: none;
     border-radius: 4px;
+    font-family: 'Stylish', serif;
+    font-weight: 600;
+    font-style: normal;
 
     &:hover {
       background-color: #9e81f0;
     }
   }
 
-  .resultWrap {
+  & .winningNumbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 15px;
+    width: 100%;
+    margin: 0 auto;
+
+    & span {
+      padding: 1.5rem;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(#bdb1f7, #9198e5, #7f67c0);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 2px 2px 3px #aaa;
+    }
+
+    & span:last-child {
+      background: linear-gradient(#bdb1f7, #3545f3, #3f297c);
+      color: #fff;
+      position: relative;
+    }
+    & span:last-child::after {
+      content: '보너스';
+      color: #000;
+      font-size: 0.75rem;
+      position: absolute;
+      top: -15px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  & .resultWrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,41 +118,65 @@
 
     .first {
       color: #8a01fa;
-      font-size: 2rem;
       font-weight: 900;
     }
 
     .second {
       color: #df22b6;
-      font-size: 1.75rem;
-      font-weight: 700;
+      font-weight: 900;
     }
 
     .third {
       color: #1a91c0;
-      font-size: 1.5rem;
-      font-weight: 500;
+      font-weight: 900;
     }
 
     .fourth {
       color: #5d972e;
-      font-size: 1.25rem;
-      font-weight: 300;
+      font-weight: 900;
     }
 
     .fifth {
       color: #ffae00;
-      font-size: 1rem;
-      font-weight: 100;
+      font-weight: 900;
     }
 
     .losing {
-      color: #000;
+      color: #aaa;
+      font-weight: 500;
     }
   }
 
-  .error {
+  & .error {
     color: red;
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home {
+    .winningNumbers {
+      & span {
+        width: 5px;
+        height: 5px;
+        padding: 1rem;
+      }
+
+      & span:last-child::after {
+        font-size: 0.6rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .home {
+    .winningNumbers {
+      & span {
+        width: 2.5px;
+        height: 2.5px;
+        padding: 0.75rem;
+      }
+    }
   }
 }
