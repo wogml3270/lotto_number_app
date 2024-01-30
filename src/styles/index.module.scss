@@ -116,6 +116,10 @@
     align-items: center;
     gap: 15px;
 
+    & p {
+      font-size: 1.25rem;
+    }
+
     .first {
       color: #8a01fa;
       font-weight: 900;
@@ -149,12 +153,27 @@
 
   & .error {
     color: red;
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .home {
+    & .inputBox1 {
+      & input {
+        padding: 8px;
+        width: 80vw;
+      }
+    }
+
+    & .inputBox2 {
+      & textarea {
+        padding: 8px;
+        width: 80vw;
+        height: 250px;
+      }
+    }
+
     .winningNumbers {
       & span {
         width: 5px;
@@ -164,6 +183,11 @@
 
       & span:last-child::after {
         font-size: 0.6rem;
+      }
+    }
+    .resultWrap {
+      & p {
+        font-size: 1rem;
       }
     }
   }
@@ -176,6 +200,11 @@
         width: 2.5px;
         height: 2.5px;
         padding: 0.75rem;
+      }
+    }
+    .resultWrap {
+      & p {
+        font-size: 0.75rem;
       }
     }
   }
