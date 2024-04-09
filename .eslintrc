@@ -1,5 +1,5 @@
 {
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:react/recommended",
     "airbnb",
@@ -25,7 +25,7 @@
     "react": {
       "version": "detect"
     },
-    "import/extensions": [".js", ".jsx"],
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "settings": {
       "import/resolver": {
         "webpack": {
@@ -40,15 +40,9 @@
     "react/display-name": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/function-component-definition": [
-      "warn",
-      { "namedComponents": "arrow-function" }
-    ],
+    "react/function-component-definition": ["warn", { "namedComponents": "arrow-function" }],
     "react/jsx-one-expression-per-line": "off",
-    "react/jsx-filename-extension": [
-      "error",
-      { "extensions": [".js", ".jsx"] }
-    ],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "react/jsx-wrap-multilines": "off",
@@ -61,13 +55,12 @@
       "ignorePackages",
       {
         "js": "never",
-        "jsx": "never"
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ],
-    "no-restricted-exports": [
-      "error",
-      { "restrictDefaultExports": { "defaultFrom": false } }
-    ],
+    "no-restricted-exports": ["error", { "restrictDefaultExports": { "defaultFrom": false } }],
     "import/order": [
       "error",
       {

@@ -7,7 +7,7 @@ const WinningNumbers = lazy(() => import('@/components/WinningNumbers'));
 const ResultSection = lazy(() => import('@/components/ResultSection'));
 const ErrorMsg = lazy(() => import('@/components/Error'));
 
-import Spinner from '@/components/Spinner';
+import Loading from '@/components/Loading';
 
 import styles from '@/styles/index.module.scss';
 
@@ -84,7 +84,7 @@ const Home: React.FC = () => {
       <InputSection drwNo={drwNo} setDrwNo={setDrwNo} lottoNumbers={lottoNumbers} setLottoNumbers={setLottoNumbers} />
       <Button submit={handleSubmit} />
       {result.length > 0 ? <WinningNumbers winning={winning} /> : <ErrorMsg error={error} />}
-      {isLoading ? <Spinner /> : <ResultSection result={result} />}
+      {isLoading ? <Loading /> : <ResultSection result={result} />}
     </div>
   );
 };

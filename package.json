@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/parser": "^7.6.0",
+    "airbnb": "^0.0.2",
     "axios": "^1.6.5",
     "moment": "^2.29.4",
     "next": "^14.1.0",
@@ -18,7 +21,8 @@
     "react-query": "^3.39.3",
     "request": "^2.88.2",
     "sass": "^1.68.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
