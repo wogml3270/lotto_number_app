@@ -2,12 +2,12 @@ import React from 'react';
 import styles from '@/styles/index.module.scss';
 
 interface ButtonProps {
-  handleSubmit: () => void;
+  submit: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ handleSubmit }) => {
+const Button: React.FC<ButtonProps> = ({ submit }) => {
   return (
-    <button className={styles.submitBtn} onClick={handleSubmit}>
+    <button className={styles.submitBtn} onClick={submit}>
       Check
     </button>
   );

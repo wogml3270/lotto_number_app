@@ -11,11 +11,11 @@ import Spinner from '@/components/Spinner';
 
 import styles from '@/styles/index.module.scss';
 
-const index: React.FC = () => {
+const Home: React.FC = () => {
   const [drwNo, setDrwNo] = useState<string>('');
   const [lottoNumbers, setLottoNumbers] = useState<string>('');
   const [result, setResult] = useState<string[]>([]);
-  const [winning, setWinning] = useState<any>({});
+  const [winning, setWinning] = useState<object>({});
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -23,23 +23,21 @@ const index: React.FC = () => {
     const formattedInput = input.replace(/\[\d+\]/g, '').trim();
 
     if (/[^0-9,\n]/.test(formattedInput)) {
-      throw new Error('로또 번호는 숫자와 쉼표만 입력 가능합니다.');
+      setLottoNumbers('');
+      throw new Error('로또 번호는 숫자와 쉼표만 입력 가능합니다.(공백 불가)');
+    }
+    if (!drwNo) {
+      setResult([]);
+      throw new Error('회차 번호를 입력하세요.');
+    }
+    if (!lottoNumbers) {
+      setResult([]);
+      throw new Error('로또 번호를 입력하세요.');
     }
     return formattedInput;
   };
 
   const handleSubmit = async () => {
-    if (!drwNo) {
-      setResult([]);
-      setError('회차 번호를 입력하세요.');
-      return;
-    }
-    if (!lottoNumbers) {
-      setResult([]);
-      setError('로또 번호를 입력하세요.');
-      return;
-    }
-
     try {
       setIsLoading(true);
       // 입력된 로또 번호 형식 파싱
@@ -60,6 +58,11 @@ const index: React.FC = () => {
           drwNo,
           lottoNumbers: line,
         });
+
+        if (response.data.winningNumbers === null) {
+          alert('아직 공개되지 않은 회차입니다.');
+          continue;
+        }
         resultsArray.push(response.data.result);
         Object.assign(winning, response.data.winningNumbers);
       }
@@ -74,16 +77,16 @@ const index: React.FC = () => {
       setError(error.message);
     }
   };
+
   return (
     <div className={styles.home}>
       <h1>Lotto Number Checker</h1>
       <InputSection drwNo={drwNo} setDrwNo={setDrwNo} lottoNumbers={lottoNumbers} setLottoNumbers={setLottoNumbers} />
-      <Button handleSubmit={handleSubmit} />
-      <WinningNumbers winning={winning} />
+      <Button submit={handleSubmit} />
+      {result.length > 0 ? <WinningNumbers winning={winning} /> : <ErrorMsg error={error} />}
       {isLoading ? <Spinner /> : <ResultSection result={result} />}
-      <ErrorMsg error={error} />
     </div>
   );
 };
 
-export default index;
+export default Home;
